@@ -27,6 +27,14 @@ while (cmd != "exit"):
             else:
                 ptr += 1
 
+        if s == '<':
+            if ptr == 0:
+                print "RangeError: Data pointer out of range."
+            elif byte[ptr] == 0 and ptr == (len(byte) - 1):
+                byte.pop()
+                ptr -= 1
+            else:
+                ptr -= 1
 
 
 
