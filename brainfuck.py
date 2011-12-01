@@ -1,24 +1,35 @@
 # Brainfuck interpreter!
 
 
-command = raw_input(">> ")
-pointer = 0
-register = [0 for x in xrange(32)]
+cmd = raw_input(">> ")
+ptr = 0
+byte = [0]
 
-while (command != "exit"):
-    stack = list(command)
+
+while (cmd != "exit"):
+    stack = list(cmd)
 
     for s in stack:
         if s == '.':
-            print chr(register[pointer])
+            print chr(byte[ptr])
         if s == '+':
-            register[pointer] += 1
+            byte[ptr] += 1
         if s == '-':
-            register[pointer] -= 1
+            byte[ptr] -= 1
         if s == ",":
             n = raw_input()
-            register[pointer] = ord(str(n))
+            byte[ptr] = ord(str(n))
+
+        if s == '>':
+            byte.append(0)
+            ptr += 1
 
 
-    print "=> [%d]" % register[pointer]
-    command = raw_input(">> ")
+    print "=>",
+    for n in xrange(len(byte)):
+        if n == ptr:
+            print "[", byte[n], "]",
+        else:
+            print "", byte[n], "",
+
+    cmd = raw_input("\n>> ")
