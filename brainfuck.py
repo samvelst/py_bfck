@@ -37,12 +37,13 @@ while (cmd != "exit"):
                 ptr -= 1
 
 
-
     print "=>",
     for n in xrange(len(byte)):
+        on_ptr = "[%d]" % byte[n]
+        non_ptr = "%d" % byte[n]
         if n == ptr:
-            print "[", byte[n], "]",
+            print on_ptr,
         else:
-            print "", byte[n], "",
+            print non_ptr,
 
     cmd = raw_input("\n>> ")
