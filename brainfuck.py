@@ -17,7 +17,7 @@ while (cmd != "exit"):
         if s == '-':
             byte[ptr] -= 1
         if s == ",":
-            n = raw_input()
+            n = raw_input()[0]
             byte[ptr] = ord(str(n))
 
         if s == '>':
