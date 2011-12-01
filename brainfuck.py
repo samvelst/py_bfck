@@ -21,8 +21,13 @@ while (cmd != "exit"):
             byte[ptr] = ord(str(n))
 
         if s == '>':
-            byte.append(0)
-            ptr += 1
+            if ptr == (len(byte) - 1):
+                byte.append(0)
+                ptr += 1
+            else:
+                ptr += 1
+
+
 
 
     print "=>",
