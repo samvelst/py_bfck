@@ -11,7 +11,11 @@ while (cmd != "exit"):
 
     for s in stack:
         if s == '.':
-            print chr(byte[ptr])
+            if 32 < byte[ptr] < 256:
+                print chr(byte[ptr]),
+            else:
+                print "",
+
         if s == '+':
             byte[ptr] += 1
         if s == '-':
@@ -37,7 +41,7 @@ while (cmd != "exit"):
                 ptr -= 1
 
 
-    print "=>",
+    print "\n=>",
     for n in xrange(len(byte)):
         on_ptr = "[%d]" % byte[n]
         non_ptr = "%d" % byte[n]
