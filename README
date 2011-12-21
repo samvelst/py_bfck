@@ -1,5 +1,9 @@
 Implementing a Brainfuck repl in Python, mainly for shits and giggles.
 
-It roughly works, but the output is a little messed up when looping.
-
 Typing 'exit' will exit the repl.
+
+It does not work well when copying code into repl that contains line breaks.
+
+If you would like to try out some sample code, make sure you copy it all on one
+line. 
+

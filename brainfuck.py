@@ -2,7 +2,6 @@
 
 class Brainfuck(object):
     """ A Brainfuck repl """
-
     def __init__(self):
         """ Creates an initial cell and a pointer to that cell """
         self.ptr = 0
@@ -20,7 +19,7 @@ class Brainfuck(object):
                 self.cell[self.ptr] -= 1
 
             if tokens[i] == '.':
-                if 32 < self.cell[self.ptr] < 256:
+                if self.cell[self.ptr] < 256:
                      self.output.append(chr(self.cell[self.ptr]))
                 else:
                      self.output.append("")
@@ -63,6 +62,8 @@ class Brainfuck(object):
 
                 while self.cell[self.ptr] != 0:
                     self.eval(sub_tokens)
+
+                i -= 1
 
             i += 1
 
