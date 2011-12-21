@@ -7,11 +7,11 @@ class Brainfuck(object):
         """ Creates an initial cell and a pointer to that cell """
         self.ptr = 0
         self.cell = [0]
+        self.output = []
 
     def eval(self, tokens):
         """ Evaluate the tokens of the program """
         i = 0
-
         while i < len(tokens):
             if tokens[i] == '+':
                 self.cell[self.ptr] += 1 
@@ -21,9 +21,9 @@ class Brainfuck(object):
 
             if tokens[i] == '.':
                 if 32 < self.cell[self.ptr] < 256:
-                     print chr(self.cell[self.ptr]),
+                     self.output.append(chr(self.cell[self.ptr]))
                 else:
-                    print "",
+                     self.output.append("")
 
                 if i == (len(tokens) - 1):
                     print ""
@@ -51,6 +51,7 @@ class Brainfuck(object):
                 go = 1
                 sub_tokens = []
                 tokens.pop(i)
+
                 while go != 0:
                     if tokens[i] == '[':
                         go += 1
@@ -62,17 +63,8 @@ class Brainfuck(object):
 
                 while self.cell[self.ptr] != 0:
                     self.eval(sub_tokens)
-            
-            i += 1
 
-        print "=>",
-        for n in xrange(len(self.cell)):
-            on_ptr = "[%d]" % self.cell[n]
-            non_ptr = "%d" % self.cell[n]
-            if n == self.ptr:
-                print on_ptr,
-            else:
-                print non_ptr,
+            i += 1
 
     def run(self):
         """ Run the repl """
@@ -81,6 +73,20 @@ class Brainfuck(object):
         while (inp != "exit"):
             tokens = list(inp)
             self.eval(tokens)
+
+            if len(self.output) > 0:
+                print ''.join(self.output)
+                self.output = []
+
+            print "=>",
+            for n in xrange(len(self.cell)):
+                on_ptr = "[%d]" % self.cell[n]
+                non_ptr = "%d" % self.cell[n]
+                if n == self.ptr:
+                    print on_ptr,
+                else:
+                    print non_ptr,
+
             inp = raw_input("\nBF> ")
 
 
