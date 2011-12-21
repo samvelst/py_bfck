@@ -1,7 +1,5 @@
 Implementing a Brainfuck repl in Python, mainly for shits and giggles.
 
-As of now, it's only partially working. It's very basic and rough around the edges.
+It roughly works, but the output is a little messed up when looping.
 
-As of now it only has one byte to work with and the + - , and . 
-
-typing 'exit' will exit the repl.
+Typing 'exit' will exit the repl.
