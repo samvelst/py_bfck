@@ -91,7 +91,3 @@ class Brainfuck(object):
             inp = raw_input("\nBF> ")
 
 
-repl = Brainfuck()
-
-if __name__ == "__main__":
-    repl.run()

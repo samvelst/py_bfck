@@ -1,5 +1,5 @@
 from nose.tools import *
-from py_bfck import bfck
+from bfck import bfck
 
 def test_plus():
     bf = bfck.Brainfuck()
