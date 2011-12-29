@@ -27,6 +27,7 @@ def main():
             tokens = get_code(script)
             if is_valid(tokens):
                 bfuck.eval(tokens)
+                print ''.join(bfuck.output)
             else:
                 print "Error: Invalid syntax in %s" % script 
 
