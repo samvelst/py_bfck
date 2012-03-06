@@ -1,2 +1,11 @@
-This is an attempt to implement a Brainfuck interpeter in Python.
+A Brainfuck interpreter in Python.
 
+Usage:
+
+    $ python main.py 
+
+    will start the REPL
+
+    $ python main.py foo.bf
+
+    will interpret the given Brainfuck program.
