@@ -2,10 +2,11 @@ A Brainfuck interpreter in Python.
 
 Usage:
 
-    $ python main.py 
+    To start the REPL: 
 
-    will start the REPL
+    $ python bfck 
 
-    $ python main.py foo.bf
 
-    will interpret the given Brainfuck program.
+    To evaluate a .bf script:
+
+    $ python bfck foo.bf
