@@ -1,39 +1,37 @@
 import bfck
 from sys import argv
 
-legal = ['+', '-', '.', ',', '<', '>', '[', ']']
-ok = [' ', '\n']
+legal_tokens = ['+', '-', '.', ',', '<', '>', '[', ']']
+allowed_tokens = [' ', '\n']
 
-def get_code(s):
-    f = open(s, 'r')
-    code = f.read()
-    return [t for t in code if t not in ok]
+def extract_tokens_from(a_source_file):
+    source_file = open(a_source_file, 'r')
+    source_code = source_file.read()
+    return [token for token in source_code if token not in allowed_tokens]
 
-
-def is_valid(tokens):
-    for t in tokens:
-        if t not in legal:
+def tokens_are_valid(tokens):
+    for token in tokens:
+        if token not in legal_tokens:
             return False
     return True
 
-
 def main():
-    bfuck = bfck.Brainfuck()
+    bfck_evaluator = bfck.Brainfuck()
 
     try:
-        script = argv[1]
+        the_script = argv[1]
 
-        if script.endswith('.bf'):
-            tokens = get_code(script)
-            if is_valid(tokens):
-                bfuck.eval(tokens)
-                print ''.join(bfuck.output)
+        if the_script.endswith('.bf'):
+            tokens_from_script = extract_tokens_from(the_script)
+            if tokens_are_valid(tokens_from_script):
+                bfck_evaluator.eval(tokens_from_script)
+                bfck_evaluator.show_output()
             else:
                 print "Error: Invalid syntax in %s" % script 
 
     except IndexError:
-        bfuck.run()
-
+        # If no script is given, run the REPL
+        bfck_evaluator.run()
 
 if __name__ == '__main__':
     main()
